@@ -1,12 +1,20 @@
-/* Requires the Docker Pipeline plugin */
-pipeline {    
-    agent {
-        docker { image 'node:20.16.0-alpine3.20' }
-    }
+pipeline {
+    agent any
+
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'node --version'
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
